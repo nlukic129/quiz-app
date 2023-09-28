@@ -39,7 +39,7 @@ const Home = () => {
     setIsExiting(true);
     setTimeout(() => {
       navigate("quiz");
-    }, 500);
+    }, 150);
   };
 
   return (
@@ -98,7 +98,7 @@ const Home = () => {
             <span></span>
             <span></span>
           </motion.div>
-          <div className={classes.about}>
+          <motion.div className={classes.about} viewport={{ once: true, amount: 0.8 }}>
             <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true, amount: 0.8 }}>
               About the App
             </motion.h2>
@@ -112,7 +112,7 @@ const Home = () => {
               topics. Whether you're a tech enthusiast or just curious about the latest advancements in the industry, our quizzes cover a wide range
               of subjects, including:
             </motion.p>
-            <ul>
+            <motion.ul viewport={{ once: true, amount: 0.8 }}>
               <motion.li initial={{ x: -300, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.9, delay: 1.5 }}>
                 Programming languages
               </motion.li>
@@ -128,7 +128,7 @@ const Home = () => {
               <motion.li initial={{ x: -300, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.9, delay: 2.7 }}>
                 Data science
               </motion.li>
-            </ul>
+            </motion.ul>
             <motion.p
               initial={{ y: -300, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -138,7 +138,7 @@ const Home = () => {
               Each quiz consists of multiple-choice questions that test your knowledge and problem-solving skills. You can compete with friends, track
               your progress, and earn badges as you master different topics.
             </motion.p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </>

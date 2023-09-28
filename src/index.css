@@ -4,3 +4,19 @@ body {
   transition-duration: 0.2s; /* Podesite željeno trajanje animacije (u sekundama) */
   transition-timing-function: ease-in-out; /* Podesite željenu funkciju ubrzanja/sporazuma */
 }
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: var(--background);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: #fff3;
+}
