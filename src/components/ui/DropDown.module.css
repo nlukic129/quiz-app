@@ -1,0 +1,104 @@
+.drop-down {
+  margin: 30px 60px 0px 60px;
+}
+
+.drop-down h1 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  text-align: center;
+  margin: 100px 0 40px;
+}
+
+.drop-down h2 {
+  font-weight: 400;
+  margin: 50px 0 10px;
+}
+
+.drop-down p {
+  margin: 0 0 30px 0;
+  font-size: 18px;
+}
+
+.menu {
+  filter: drop-shadow(1px 1px 1px #5116a9);
+  width: 300px;
+}
+
+.drop-down ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--accent);
+}
+
+.drop-down li {
+  color: var(--background);
+  display: block;
+  transform-origin: -20px 50%;
+  border-radius: 10px;
+}
+
+.drop-down ul,
+.drop-down li {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.drop-down button {
+  -webkit-appearance: button;
+  background: var(--accent);
+  color: var(--background);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drop-down button path {
+  fill: var(--background);
+}
+
+.drop-down input {
+  accent-color: var(--accent);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  padding-bottom: 50px;
+  align-items: center;
+}
+
+.item {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: var(--accent);
+  color: var(--background);
+  font-size: 240px;
+  line-height: 260px;
+  font-weight: 700;
+  border-radius: 30px;
+}
+
+.drop-down h1,
+.drop-down h2,
+.drop-down h3 {
+  font-family: sofia-pro, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
