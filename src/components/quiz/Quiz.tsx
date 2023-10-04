@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import classes from "./Quiz.module.css";
 import DropDown from "../ui/DropDown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const defaultCategoryText = "All Categories";
 const defaultDifficultyText = "All the difficulties";
@@ -39,22 +39,25 @@ const Quiz = () => {
 
   const [isSelected, setIsSelected]: any = useState(false);
 
-  const selectCategoryHandler = (selectedCategory: string) => {
-    setSelectedCategory(selectedCategory);
-    checkIfSelected();
+  const selectCategoryHandler = (category: string) => {
+    setSelectedCategory(category);
   };
 
-  const selectDifficultyHandler = (selectedDifficulty: string) => {
-    setSelectedDifficulty(selectedDifficulty);
-    checkIfSelected();
+  const selectDifficultyHandler = (difficulty: string) => {
+    setSelectedDifficulty(difficulty);
   };
 
-  const selectLimitHandler = (selectedLimit: string) => {
-    setSelectedLimit(selectedLimit);
-    checkIfSelected();
+  const selectLimitHandler = (limit: string) => {
+    setSelectedLimit(limit);
   };
+
+  useEffect(() => {
+    checkIfSelected();
+  }, [selectedCategory, selectedDifficulty, selectedLimit]);
 
   const checkIfSelected = () => {
+    console.log(selectedCategory);
+
     if (selectedCategory === "Default" && selectedDifficulty === "Default" && selectedLimit === "Default") {
       setIsSelected(false);
     } else {
@@ -69,6 +72,29 @@ const Quiz = () => {
         <DropDown items={difficulties} onSelect={selectDifficultyHandler} title={defaultDifficultyText} />
         <DropDown items={limits} onSelect={selectLimitHandler} title={defaultLimitText} />
       </div>
+      <AnimatePresence>
+        {isSelected ? (
+          <motion.div
+            className={classes.start}
+            key="selected"
+            initial={{ y: 200, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.5, type: "spring", bounce: 0.5 }}
+          >
+            Selected
+          </motion.div>
+        ) : (
+          <motion.div
+            className={classes.start}
+            key="not-selected"
+            initial={{ y: 200, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.5, type: "spring", bounce: 0.5 }}
+          >
+            Not selected
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

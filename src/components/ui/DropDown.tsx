@@ -11,10 +11,11 @@ const DropDown = ({ items, onSelect, title }: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const scope = useMenuAnimation(isOpen);
 
-  const selectHandler = (select: any) => {
-    const selectedItem = select.target.textContent;
-    onSelect(selectedItem);
-    setSelected(selectedItem);
+  const selectHandler = (event: any) => {
+    const selectedItemText = event.currentTarget.textContent;
+    const selectedItemValue = event.currentTarget.getAttribute("value");
+    onSelect(selectedItemValue);
+    setSelected(selectedItemText);
     setIsOpen(!isOpen);
   };
 
