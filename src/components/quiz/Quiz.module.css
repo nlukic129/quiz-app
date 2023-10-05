@@ -44,10 +44,17 @@
 .start {
   position: absolute;
   font-family: Title-Font;
-  width: 100%;
+  width: auto;
+  left: 50%;
   font-size: 50px;
   color: rgb(255, 255, 255);
   text-shadow: 5px 5px 10px rgba(95, 75, 62, 0.5);
   text-align: center;
-  bottom: 300px;
+  bottom: 150px;
+}
+
+.start p,
+.start button {
+  position: relative;
+  left: -50%;
 }

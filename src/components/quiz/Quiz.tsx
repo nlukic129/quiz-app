@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import classes from "./Quiz.module.css";
 import DropDown from "../ui/DropDown";
 import { useEffect, useState } from "react";
+import { fetchQuestions } from "../../util/http";
 
 const defaultCategoryText = "All Categories";
 const defaultDifficultyText = "All the difficulties";
@@ -52,17 +53,29 @@ const Quiz = () => {
   };
 
   useEffect(() => {
-    checkIfSelected();
+    checkIfAnySelected();
   }, [selectedCategory, selectedDifficulty, selectedLimit]);
 
-  const checkIfSelected = () => {
-    console.log(selectedCategory);
-
-    if (selectedCategory === "Default" && selectedDifficulty === "Default" && selectedLimit === "Default") {
-      setIsSelected(false);
-    } else {
+  const checkIfAnySelected = () => {
+    if (checkIfSelected(selectedCategory) || checkIfSelected(selectedDifficulty) || checkIfSelected(selectedLimit)) {
       setIsSelected(true);
+    } else {
+      setIsSelected(false);
     }
+  };
+
+  const checkIfSelected = (value: string) => {
+    return value !== "Default";
+  };
+
+  const startQuizHandler = () => {
+    const parameters = {
+      category: checkIfSelected(selectedCategory) ? selectedCategory : "",
+      difficulty: checkIfSelected(selectedDifficulty) ? selectedDifficulty : "",
+      limit: checkIfSelected(selectedLimit) ? selectedLimit : "",
+    };
+
+    fetchQuestions(parameters);
   };
 
   return (
@@ -81,7 +94,8 @@ const Quiz = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.5, type: "spring", bounce: 0.5 }}
           >
-            Selected
+            <p>Selected</p>
+            <button onClick={startQuizHandler}>Start</button>
           </motion.div>
         ) : (
           <motion.div
@@ -91,7 +105,8 @@ const Quiz = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.5, type: "spring", bounce: 0.5 }}
           >
-            Not selected
+            <p>Not selected</p>
+            <button onClick={startQuizHandler}>Start</button>
           </motion.div>
         )}
       </AnimatePresence>
